@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="300dp"
         android:backgroundTint="#FF5745"
-        android:onClick="openActivity1"
+        android:onClick="homeActivity"
         android:text="Submit"
         android:textColor="#F4F1F1"
         android:textColorLink="#00ED3B"
