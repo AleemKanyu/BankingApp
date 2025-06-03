@@ -78,6 +78,8 @@ public class Deposit extends AppCompatActivity {
     public void homeActivity(View v) {
         floatingActionButton13 = findViewById(R.id.floatingActionButton13);
         Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+
     }
 }

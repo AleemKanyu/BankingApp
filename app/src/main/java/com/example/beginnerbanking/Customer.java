@@ -1,6 +1,6 @@
 package com.example.beginnerbanking;
 
-import android.util.Log;
+
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

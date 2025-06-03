@@ -82,6 +82,8 @@ public class withdraw extends AppCompatActivity {
     public void openActivity(View v) {
         floatingActionButton2 = findViewById(R.id.floatingActionButton2);
         Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+
     }
 }

@@ -2,7 +2,7 @@ package com.example.beginnerbanking;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,7 +35,7 @@ public class CreateAccount extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_create_account);
 
-        // Initialize views
+
         editTextText = findViewById(R.id.editTextText);
         editTextText2 = findViewById(R.id.editTextText2);
         editTextText3 = findViewById(R.id.editTextText3);
@@ -83,13 +83,15 @@ public class CreateAccount extends AppCompatActivity {
         intent.putExtra(EXTRA_NAME, saved.getName());
         intent.putExtra(EXTRA_AGE, String.valueOf(saved.getAge()));
         intent.putExtra(EXTRA_COLOUR, saved.getColour());
-        intent.putExtra(EXTRA_ACCOUNTNUMBER, String.valueOf(saved.getAccountNumber()));
+        intent.putExtra(EXTRA_ACCOUNTNUMBER, String.format("%04d", saved.getAccountNumber()));
         intent.putExtra(EXTRA_PIN, String.valueOf(saved.getPin()));
         startActivity(intent);
     }
 
     public void homeActivity(View v) {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+
     }
 }
