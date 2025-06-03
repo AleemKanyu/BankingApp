@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Circular FABs don't need custom styles unless changing default Material style -->
+    <!-- But if needed, here's a basic example -->
+    <style name="CustomFABStyle" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="shapeAppearance">@style/CircleShape</item>
+    </style>
+
+    <style name="CircleShape" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item> <!-- ensures circle if width == height -->
+    </style>
+</resources>
