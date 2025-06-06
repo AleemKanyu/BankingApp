@@ -64,7 +64,7 @@ public class Pin extends AppCompatActivity {
 
         Customer customer = dao.getCustomerByAccountNumber(accountNumber);
 
-        if (customer != null && customer.getColour().equalsIgnoreCase(favouriteColour)) {
+        if (customer != null && customer.getAnswer().equalsIgnoreCase(favouriteColour)) {
             customer.setPin(newPin);
             dao.update(customer);
             Toast.makeText(this, "PIN changed successfully!", Toast.LENGTH_SHORT).show();

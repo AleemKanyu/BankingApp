@@ -22,7 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class Balance extends AppCompatActivity {
 
     EditText editTextNumber2, editTextNumberPassword2;
-    TextView textView12;
+
     Button button3;
     FloatingActionButton floatingActionButton9;
 

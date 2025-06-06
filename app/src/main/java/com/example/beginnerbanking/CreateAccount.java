@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -23,9 +26,10 @@ public class CreateAccount extends AppCompatActivity {
     EditText editTextText, editTextText2, editTextText3;
     AppDatabase db;
     CustomerDao dao;
+    String question;
 
     public static final String EXTRA_NAME = "name.com";
-    public static final String EXTRA_AGE = "age.com";
+
     public static final String EXTRA_COLOUR = "colour.com";
     public static final String EXTRA_ACCOUNTNUMBER = "accountnumber.com";
     public static final String EXTRA_PIN = "pin.com";
@@ -41,7 +45,20 @@ public class CreateAccount extends AppCompatActivity {
         editTextText2 = findViewById(R.id.editTextText2);
         editTextText3 = findViewById(R.id.editTextText3);
         button = findViewById(R.id.button);
+        Spinner mySpinner = findViewById(R.id.mySpinner);
+        String[] secuirityQuestions = {"Select Secuirity Question", "What's your favourite Colour?", "What's your favourite Sport?", "What's your favourite Food?"};
 
+
+// Create an ArrayAdapter using the string array
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_layout, secuirityQuestions);
+
+
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(R.layout.spinner_layout);
+
+
+// Apply the adapter to the spinner
+        mySpinner.setAdapter(adapter);
         // Initialize Room DB
         db = AppDatabase.getInstance(this);
         dao = db.customerDao();
@@ -51,11 +68,24 @@ public class CreateAccount extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                question = parent.getItemAtPosition(position).toString();
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Optional
+            }
+        });
 
         button.setOnClickListener(v -> createAccount());
+
     }
 
     public void createAccount() {
+
         String name = editTextText.getText().toString();
         String ageStr = editTextText2.getText().toString();
         String colour = editTextText3.getText().toString();
@@ -72,7 +102,7 @@ public class CreateAccount extends AppCompatActivity {
         List<Customer> allCustomers = dao.getAllCustomers();
         int nextAccountNumber = allCustomers.size();
 
-        Customer newCustomer = new Customer(name, nextAccountNumber, age, random, colour);
+        Customer newCustomer = new Customer(name, nextAccountNumber, age, random,question, colour);
         dao.insert(newCustomer);
 
 

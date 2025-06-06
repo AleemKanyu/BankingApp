@@ -15,24 +15,35 @@ public class Customer {
     int Age;
     int Balance;
      int Pin;
-    String colour;
+     String question;
+    String answer;
     // Required no-arg constructor for Room
     public Customer() {
     }
 
 
+
+
     // Constructor
-    public Customer(String Name, int AccountNumber, int Age, int random, String Answer) {
+    public Customer(String Name, int AccountNumber, int Age, int random,String question, String Answer) {
         int j = 8888;
         this.Name = Name;
         this.AccountNumber = AccountNumber;
         this.Age = Age;
         this.Balance = 1000;
         this.Pin = (j - random + AccountNumber);
-        this.colour = Answer;
+        this.question = question;
+        this.answer = Answer;
     }
 
     // Getters and Setters
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
 
     public String getName() {
         return Name;
@@ -74,15 +85,15 @@ public class Customer {
         this.Pin = pin;
     }
 
-    public String getColour() {
-        return colour;
+    public String getAnswer() {
+        return answer;
     }
 
-    public void setColour(String colour) {
-        this.colour = colour;
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 
-    public String getFavouriteColour() {return colour;}
+    public String getFavouriteColour() {return answer;}
 
 
 }

@@ -5,10 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,9 +23,11 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    AppDatabase db;
-    CustomerDao dao;
+
     LinearLayout f;
+    BiometricPrompt biometricPrompt;
+    BiometricPrompt.PromptInfo promptInfo;
+
     public static final String EXTRA_NUMBER = "accountnumberoftheaccount.com";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +73,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void sendActivity(View v) {
-
-        Intent intent = new Intent(this, SendMoney.class);
-        startActivity(intent);
+        checkBiometricAndAuthenticate();
     }
     public void contactActivity(View v) {
 
@@ -140,7 +144,54 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    private void checkBiometricAndAuthenticate() {
+        BiometricManager biometricManager = BiometricManager.from(this);
+        switch (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG | BiometricManager.Authenticators.DEVICE_CREDENTIAL)) {
+            case BiometricManager.BIOMETRIC_SUCCESS:
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+            case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+            case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                Toast.makeText(this, "Biometric not available or not set up", Toast.LENGTH_SHORT).show();
+                return;
+        }
 
+        biometricPrompt = new BiometricPrompt(MainActivity.this,
+                ContextCompat.getMainExecutor(this),
+                new BiometricPrompt.AuthenticationCallback() {
+                    @Override
+                    public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                        super.onAuthenticationSucceeded(result);
+                        Toast.makeText(getApplicationContext(), "Authentication Success", Toast.LENGTH_SHORT).show();
+
+                        // Only open SendMoney activity
+                        Intent intent = new Intent(MainActivity.this, SendMoney.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                        super.onAuthenticationError(errorCode, errString);
+                        Toast.makeText(getApplicationContext(), "Error: " + errString, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onAuthenticationFailed() {
+                        super.onAuthenticationFailed();
+                        Toast.makeText(getApplicationContext(), "Authentication Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Biometric Authentication")
+                .setSubtitle("Use your face, fingerprint or device PIN")
+                .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_STRONG | BiometricManager.Authenticators.DEVICE_CREDENTIAL)
+                .build();
+
+        biometricPrompt.authenticate(promptInfo);
+    }
 
 }
+
+
 
