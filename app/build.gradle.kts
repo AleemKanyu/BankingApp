@@ -37,8 +37,9 @@ android {
 dependencies {
 
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
-
+    implementation ("androidx.biometric:biometric:1.2.0-alpha04")
     implementation ("androidx.room:room-runtime:2.6.1")
+    implementation(libs.annotation)
     annotationProcessor ("androidx.room:room-compiler:2.6.1")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")

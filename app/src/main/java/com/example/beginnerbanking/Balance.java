@@ -3,6 +3,7 @@ package com.example.beginnerbanking;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -42,7 +44,6 @@ public class Balance extends AppCompatActivity {
 
         editTextNumber2 = findViewById(R.id.editTextNumber2);
         editTextNumberPassword2 = findViewById(R.id.editTextNumberPassword2);
-        textView12 = findViewById(R.id.textView12);
         button3 = findViewById(R.id.button3);
         floatingActionButton9 = findViewById(R.id.floatingActionButton9);
 
@@ -68,7 +69,27 @@ public class Balance extends AppCompatActivity {
         Customer customer = dao.getCustomerByAccountNumber(accountNumber);
 
         if (customer != null && customer.getPin() == pin) {
-            textView12.setText("Your Balance is " + customer.getBalance() + " Rs.");
+
+            View view = LayoutInflater.from(this).inflate(R.layout.balance, null);
+            TextView balanceupdate = view.findViewById(R.id.balanceupdate);
+            balanceupdate.setText("Your Balance is ₹" + customer.getBalance());
+
+            AlertDialog dialog = new AlertDialog.Builder(this)
+                    .setView(view)
+                    .create();
+
+// OPTIONAL: Add animation
+            view.setAlpha(0f);
+            view.setScaleX(0.8f);
+            view.setScaleY(0.8f);
+            view.animate()
+                    .alpha(1f)
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .setDuration(300)
+                    .start();
+
+            dialog.show();
         } else {
             Toast.makeText(this, "Invalid Account Number or PIN!", Toast.LENGTH_SHORT).show();
         }

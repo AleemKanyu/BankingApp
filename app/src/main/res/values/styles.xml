@@ -10,4 +10,10 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item> <!-- ensures circle if width == height -->
     </style>
+    <style name="CustomDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:background">@drawable/rounded_box</item>
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+    </style>
+
 </resources>

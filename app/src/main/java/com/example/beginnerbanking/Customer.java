@@ -81,4 +81,9 @@ public class Customer {
     public void setColour(String colour) {
         this.colour = colour;
     }
+
+    public String getFavouriteColour() {return colour;}
+
+
 }
+

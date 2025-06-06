@@ -14,6 +14,8 @@ public interface CustomerDao {
 
     @Delete
     void delete(Customer customer);
+    @Query("SELECT * FROM customers WHERE AccountNumber = :accNumber AND pin = :pin LIMIT 1")
+    Customer verifyLogin(int accNumber, int pin);
 
     @Query("SELECT * FROM customers WHERE AccountNumber = :accNo")
     Customer getCustomerByAccountNumber(int accNo);

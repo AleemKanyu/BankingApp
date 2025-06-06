@@ -10,7 +10,7 @@
 
     <EditText
         android:id="@+id/editTextText"
-        android:layout_width="409dp"
+        android:layout_width="266dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="108dp"
         android:ems="10"
@@ -24,7 +24,7 @@
 
     <EditText
         android:id="@+id/editTextText2"
-        android:layout_width="409dp"
+        android:layout_width="266dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Enter your Age"
@@ -38,8 +38,8 @@
 
     <EditText
         android:id="@+id/editTextText3"
-        android:layout_width="409dp"
-        android:layout_height="46dp"
+        android:layout_width="266dp"
+        android:layout_height="49dp"
         android:layout_marginTop="44dp"
         android:ems="10"
         android:hint="Whats your favourite colour?"
@@ -73,6 +73,10 @@
         android:background="#FFFDFD"
         android:clickable="true"
         android:onClick="homeActivity"
+        app:backgroundTint="@android:color/white"
+        app:strokeColor="@android:color/black"
+        app:strokeWidth="2dp"
+        app:tint="@android:color/holo_blue_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

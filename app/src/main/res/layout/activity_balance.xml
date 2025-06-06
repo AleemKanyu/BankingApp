@@ -5,41 +5,45 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/white"
     tools:context=".Balance">
 
     <EditText
         android:id="@+id/editTextNumber2"
-        android:layout_width="282dp"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
+        android:background="@drawable/button_background"
         android:ems="10"
         android:hint="Enter Account Number"
         android:inputType="number"
-        android:textColor="#EFEEEE"
-        android:textColorHint="#FFFEFE"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintVertical_bias="0.266" />
 
     <EditText
         android:id="@+id/editTextNumberPassword2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
         android:ems="10"
         android:hint="Enter  Your PIN"
         android:inputType="numberPassword"
         android:minHeight="48dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#F6F6F6"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber2"
-        app:layout_constraintVertical_bias="0.174" />
+        app:layout_constraintVertical_bias="0.095" />
 
     <Button
         android:id="@+id/button3"
@@ -51,20 +55,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumberPassword2"
-        app:layout_constraintVertical_bias="0.235" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColorHighlight="#FBFBFB"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
-        app:layout_constraintVertical_bias="0.287" />
+        app:layout_constraintVertical_bias="0.13"
+        app:strokeColor="#000000" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton9"
@@ -79,6 +71,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.944"
         app:srcCompat="@drawable/home" />
 </androidx.constraintlayout.widget.ConstraintLayout>

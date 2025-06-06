@@ -15,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.List;
+import java.util.Locale;
 
 public class CreateAccount extends AppCompatActivity {
 
@@ -74,17 +75,15 @@ public class CreateAccount extends AppCompatActivity {
         Customer newCustomer = new Customer(name, nextAccountNumber, age, random, colour);
         dao.insert(newCustomer);
 
+
         Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show();
 
         // Retrieve the saved customer to pass via intent
         Customer saved = dao.getCustomerByAccountNumber(nextAccountNumber);
 
-        Intent intent = new Intent(this, Details.class);
-        intent.putExtra(EXTRA_NAME, saved.getName());
-        intent.putExtra(EXTRA_AGE, String.valueOf(saved.getAge()));
-        intent.putExtra(EXTRA_COLOUR, saved.getColour());
-        intent.putExtra(EXTRA_ACCOUNTNUMBER, String.format("%04d", saved.getAccountNumber()));
-        intent.putExtra(EXTRA_PIN, String.valueOf(saved.getPin()));
+        Intent intent = new Intent(this, DetailsActivity.class);
+        intent.putExtra(EXTRA_ACCOUNTNUMBER, String.format(Locale.US, "%04d", saved.getAccountNumber()));
+        intent.putExtra("source", "second");
         startActivity(intent);
     }
 

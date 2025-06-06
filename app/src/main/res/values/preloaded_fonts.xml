@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/adlam_display</item>
+        <item>@font/archivo_black</item>
+        <item>@font/bangers</item>
+        <item>@font/blaka_hollow</item>
+        <item>@font/gasoek_one</item>
+        <item>@font/syncopate</item>
+        <item>@font/tilt_prism</item>
+    </array>
+</resources>
