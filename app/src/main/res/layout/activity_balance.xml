@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/gradientgreen"
     tools:context=".Balance">
 
     <EditText
@@ -45,11 +45,14 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber2"
         app:layout_constraintVertical_bias="0.095" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/new_button_background1"
+        android:padding="10dp"
         android:text="Check Balance"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -62,15 +65,19 @@
         android:id="@+id/floatingActionButton9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="56dp"
         android:background="#FFFDFD"
         android:clickable="true"
         android:onClick="homeActivity"
+        app:backgroundTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3"
-        app:layout_constraintVertical_bias="0.944"
-        app:srcCompat="@drawable/home" />
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/home"
+        app:strokeColor="@android:color/black"
+        app:strokeWidth="2dp"
+        app:tint="@android:color/holo_blue_light" />
 </androidx.constraintlayout.widget.ConstraintLayout>

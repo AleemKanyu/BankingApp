@@ -1,8 +1,11 @@
 package com.example.beginnerbanking;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -24,11 +27,12 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    LinearLayout f;
+    LinearLayout a,b,c,d,e,f,depositvertical,BalanceVErtical,Transfervertical,sendmoneyll,contactll,createaccountll;
     BiometricPrompt biometricPrompt;
     BiometricPrompt.PromptInfo promptInfo;
 
     public static final String EXTRA_NUMBER = "accountnumberoftheaccount.com";
+    @SuppressLint({"ClickableViewAccessibility", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,15 +43,39 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
+//        startActivity(new Intent(this, QRScannerActivity.class));
+depositvertical=findViewById(R.id.depositvertical);
+BalanceVErtical=findViewById(R.id.BalanceVErtical);
+Transfervertical=findViewById(R.id.Transfervertical);
+        a=findViewById(R.id.a);
+        b=findViewById(R.id.b);
+        c=findViewById(R.id.c);
+        d=findViewById(R.id.d);
+        e=findViewById(R.id.e);
         f=findViewById(R.id.f);
+        sendmoneyll=findViewById(R.id.sendmoneyll);
+        contactll=findViewById(R.id.contactll);
+        createaccountll=findViewById(R.id.createaccountll);
+
         f.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showLoginPopup();
             }
         });
+        applyLayoutAnimation(a);
+        applyLayoutAnimation(b);
+        applyLayoutAnimation(c);
+        applyLayoutAnimation(d);
+        applyLayoutAnimation(e);
+        applyLayoutAnimation(f);
+        applyLayoutAnimation(Transfervertical);
+        applyLayoutAnimation(BalanceVErtical);
+        applyLayoutAnimation(depositvertical);
+        applyLayoutAnimation(sendmoneyll);
+        applyLayoutAnimation(contactll);
+        applyLayoutAnimation(createaccountll);
+
     }
 
     public void openActivity(View v) {
@@ -82,12 +110,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void depositActivity(View v) {
-//        imageButton = findViewById(R.id.imageButton);
+
         Intent intent = new Intent(this, Deposit.class);
         startActivity(intent);
     }
 
     public void withdrawActivity(View v) {
+
 
         Intent intent = new Intent(this, withdraw.class);
         startActivity(intent);
@@ -190,7 +219,26 @@ public class MainActivity extends AppCompatActivity {
 
         biometricPrompt.authenticate(promptInfo);
     }
+    @SuppressLint("ClickableViewAccessibility")
+    private void applyLayoutAnimation(LinearLayout clickableLayout) {
+        clickableLayout.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    v.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.scale_down));
+                    return true;
 
+                case MotionEvent.ACTION_UP:
+                    v.performClick();  // Ensures accessibility support
+                    v.clearAnimation();
+                    return true;
+
+                case MotionEvent.ACTION_CANCEL:
+                    v.clearAnimation();
+                    return true;
+            }
+            return false;
+        });
+    }
 }
 
 

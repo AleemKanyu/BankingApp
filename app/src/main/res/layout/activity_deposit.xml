@@ -5,18 +5,20 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="@drawable/gradient1"
     tools:context=".Deposit">
 
     <EditText
         android:id="@+id/editTextNumber8"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
         android:hint="Enter the Amount"
         android:inputType="number"
         android:textAlignment="center"
-        android:textColorHint="#FFFCFC"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -26,13 +28,15 @@
 
     <EditText
         android:id="@+id/editTextNumber9"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
         android:hint="Enter Your Account Number"
         android:inputType="number"
         android:textAlignment="center"
-        android:textColorHint="#FFFCFC"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -40,11 +44,14 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber8"
         app:layout_constraintVertical_bias="0.1" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/new_button_background"
+        android:padding="10dp"
         android:text="Deposit"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fullscreen black background -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#CC000000" /> <!-- Semi-transparent black -->
+        </shape>
+    </item>
+
+    <!-- Transparent cutout area -->
+    <item android:left="50dp" android:top="200dp" android:right="50dp" android:bottom="200dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+</layer-list>
