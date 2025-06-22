@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Permissions -->
-    <uses-permission android:name="android.permission.CAMERA" />
-
-    <!-- Hardware features -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- Hardware features -->
     <uses-feature android:name="android.hardware.camera.any" />
 
     <application
@@ -18,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BeginnerBanking"
         tools:targetApi="31">
-
+        <activity
+            android:name=".developerpage"
+            android:exported="false" />
         <!-- Activities -->
         <activity
             android:name=".QRScannerActivity"
@@ -68,11 +67,10 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Fonts (if defined) -->
+        </activity> <!-- Fonts (if defined) -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

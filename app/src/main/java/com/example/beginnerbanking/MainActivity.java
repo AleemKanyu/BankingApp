@@ -26,6 +26,7 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+    final String DeveloperPassword="962272";
 
     LinearLayout a,b,c,d,e,f,depositvertical,BalanceVErtical,Transfervertical,sendmoneyll,contactll,createaccountll;
     BiometricPrompt biometricPrompt;
@@ -77,14 +78,15 @@ Transfervertical=findViewById(R.id.Transfervertical);
         applyLayoutAnimation(createaccountll);
 
     }
-
+public void devActivity(View v){
+        devLoginPopup();
+}
     public void openActivity(View v) {
 
         Intent intent = new Intent(this, CreateAccount.class);
         startActivity(intent);
     }
     public void deleteActivity(View v) {
-
         Intent intent = new Intent(this, DeleteAccount.class);
         startActivity(intent);
     }
@@ -169,6 +171,53 @@ Transfervertical=findViewById(R.id.Transfervertical);
         });
 
         cancelButton.setOnClickListener(v -> dialog.dismiss());
+
+        dialog.show();
+    }
+    public void devLoginPopup() {
+        View view = LayoutInflater.from(this).inflate(R.layout.devlogin, null);
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
+
+        view.setAlpha(0f);
+        view.setScaleX(0.8f);
+        view.setScaleY(0.8f);
+        view.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f)
+                .setDuration(300)
+                .start();
+
+
+        EditText passwordEditText = view.findViewById(R.id.devpassword);
+        Button dev_login1 = view.findViewById(R.id.dev_login1);
+        Button dev_cancel2 = view.findViewById(R.id.dev_cancel2);
+
+        dev_login1.setOnClickListener(v -> {
+
+            String password = passwordEditText.getText().toString().trim();
+
+
+           if(password.isEmpty()){
+               Toast.makeText(this, "Enter password", Toast.LENGTH_SHORT).show();
+               return;
+           }
+
+            if(!password.equals(DeveloperPassword)){
+                Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, developerpage.class);
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        });
+
+        dev_cancel2.setOnClickListener(v -> dialog.dismiss());
 
         dialog.show();
     }

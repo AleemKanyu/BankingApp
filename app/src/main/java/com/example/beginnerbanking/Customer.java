@@ -7,8 +7,6 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "customers")
 public class Customer {
-
-
     @PrimaryKey
     private int AccountNumber;
     String Name;
@@ -21,10 +19,6 @@ public class Customer {
     public Customer() {
     }
 
-
-
-
-    // Constructor
     public Customer(String Name, int AccountNumber, int Age, int random,String question, String Answer) {
         int j = 8888;
         this.Name = Name;

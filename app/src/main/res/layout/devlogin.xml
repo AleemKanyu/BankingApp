@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="24dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/gasoek_one"
+            android:text="Welcome Admin"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/devpassword"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="numberPassword"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textColorHint="#999999"
+            android:layout_marginBottom="24dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:weightSum="2">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dev_login1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/new_button_background"
+                android:elevation="0dp"
+                android:stateListAnimator="@null"
+                android:text="Login"
+                android:textColor="#000000"
+                android:tint="@null" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dev_cancel2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/new_button_background3"
+                android:elevation="0dp"
+                android:stateListAnimator="@null"
+                android:text="Cancel"
+                android:textColor="#000000"
+                android:tint="@null" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

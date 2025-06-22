@@ -231,36 +231,7 @@
                         android:layout_height="110dp"
                         android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:id="@+id/a"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_weight="1"
-                            android:foreground="?attr/selectableItemBackground"
-                            android:gravity="center"
-                            android:onClick="openActivity"
-                            android:orientation="vertical"
-                            android:padding="16dp">
 
-
-                            <ImageView
-                                android:id="@+id/create"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:background="@drawable/circle"
-                                android:elevation="4dp"
-                                android:src="@drawable/add3"
-                                tools:srcCompat="@drawable/add3" />
-
-                            <TextView
-                                android:id="@+id/createpic"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="0dp"
-                                android:text="Create"
-                                android:textAlignment="center"
-                                android:textColor="@color/black" />
-                        </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/b"
@@ -323,6 +294,37 @@
                                 android:textAlignment="center"
                                 android:textColor="@color/black"
                                 android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/a"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_weight="1"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:gravity="center"
+                            android:onClick="devActivity"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+
+                            <ImageView
+                                android:id="@+id/developerbutton"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:background="@drawable/circle"
+                                android:elevation="4dp"
+                                android:src="@drawable/developer"
+                                tools:srcCompat="@drawable/developer" />
+
+                            <TextView
+                                android:id="@+id/createpic"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="0dp"
+                                android:text="Admin"
+                                android:textAlignment="center"
+                                android:textColor="@color/black" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -470,14 +472,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="10dp"
-                            android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
                                 android:id="@+id/textView9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:fontFamily="@font/archivo_black"
                                 android:text="Create Account"
                                 android:textColor="#000000"
@@ -524,8 +524,7 @@
                             <TextView
                                 android:id="@+id/textView12"
                                 android:layout_width="wrap_content"
-                                android:layout_height="44dp"
-                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
                                 android:fontFamily="@font/archivo_black"
                                 android:text="Send Money"
                                 android:textColor="#000000"

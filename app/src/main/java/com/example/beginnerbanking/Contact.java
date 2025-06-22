@@ -32,7 +32,7 @@ Button button6;
         button6 = findViewById(R.id.button6);
 
         button6.setOnClickListener(new View.OnClickListener() {
-            String[] addresses={"kanyualeem416@gmail.com","ifham2077@gmail.com"};
+            String[] addresses={"kanyualeem416@gmail.com"};
             @Override
             public void onClick(View v) {
                 String haha = editTextText5.getText().toString();
