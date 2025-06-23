@@ -18,7 +18,6 @@ import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -142,9 +141,9 @@ public void devActivity(View v){
                 .start();
 
         EditText accountEditText = view.findViewById(R.id.edit_account_number);
-        EditText passwordEditText = view.findViewById(R.id.edit_password);
-        Button loginButton = view.findViewById(R.id.btn_login);
-        Button cancelButton = view.findViewById(R.id.btn_cancel);
+        EditText passwordEditText = view.findViewById(R.id.edit_deposit);
+        Button loginButton = view.findViewById(R.id.update_balance);
+        Button cancelButton = view.findViewById(R.id.update_cancel);
 
         loginButton.setOnClickListener(v -> {
             String account = accountEditText.getText().toString().trim();

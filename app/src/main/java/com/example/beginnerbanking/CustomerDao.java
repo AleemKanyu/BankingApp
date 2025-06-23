@@ -11,7 +11,8 @@ public interface CustomerDao {
 
     @Update
     void update(Customer customer);
-
+    @Query("UPDATE customers SET Balance = :balance WHERE AccountNumber = :accNo")
+    void updateBalance(int accNo, int balance);
     @Delete
     void delete(Customer customer);
     @Query("SELECT * FROM customers WHERE AccountNumber = :accNumber AND pin = :pin LIMIT 1")

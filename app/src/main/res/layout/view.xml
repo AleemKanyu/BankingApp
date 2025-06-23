@@ -12,7 +12,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
 
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_marginTop="1dp"
@@ -30,13 +30,13 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_weight="2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="left|center_vertical"
             app:srcCompat="@drawable/profile" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
@@ -63,16 +63,35 @@
                 android:textColor="#000000" />
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/deletebutton"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/new_button_background3"
-            android:padding="6dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/delete" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/addmoneybutton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/new_button_background1"
+                android:padding="6dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/addmoney" />
+
+            <ImageButton
+                android:id="@+id/deletebutton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/new_button_background3"
+                android:padding="6dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/delete" />
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
