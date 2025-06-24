@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class DetailsActivity extends AppCompatActivity {
     ImageView userProfile;
-    TextView accountnumber1, password1, favouritecolour1, balance3,usernametext;
+    TextView accountnumber1, password1, favouritecolour1, balance3,usernametext,genderanswer;
     AppDatabase db;
     CustomerDao dao;
     @Override
@@ -36,6 +36,7 @@ public class DetailsActivity extends AppCompatActivity {
         balance3 = findViewById(R.id.balance10);
         usernametext = findViewById(R.id.usernametext);
         userProfile=findViewById(R.id.userProfile);
+        genderanswer=findViewById(R.id.genderanswer);
         db = AppDatabase.getInstance(this);
         dao = db.customerDao();
         Intent intent = getIntent();
@@ -67,6 +68,7 @@ public class DetailsActivity extends AppCompatActivity {
             password1.setText(String.valueOf(customer.getPin()));
             favouritecolour1.setText(customer.getFavouriteColour());
             balance3.setText(String.valueOf(customer.getBalance()));
+            genderanswer.setText(String.valueOf(customer.getGender()));
         } else if ("second".equals(source)) {
 
             String number = intent.getStringExtra(CreateAccount.EXTRA_ACCOUNTNUMBER);
@@ -86,6 +88,7 @@ public class DetailsActivity extends AppCompatActivity {
             password1.setText(String.valueOf(customer.getPin()));
             favouritecolour1.setText(customer.getFavouriteColour());
             balance3.setText(String.valueOf(customer.getBalance()));
+            genderanswer.setText(String.valueOf(customer.getGender()));
         }
     }
     public void homeActivity(View v) {

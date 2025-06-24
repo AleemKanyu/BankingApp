@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout a,b,c,d,e,f,depositvertical,BalanceVErtical,Transfervertical,sendmoneyll,contactll,createaccountll;
     BiometricPrompt biometricPrompt;
     BiometricPrompt.PromptInfo promptInfo;
+    ImageView userIcon;
 
     public static final String EXTRA_NUMBER = "accountnumberoftheaccount.com";
     @Override
@@ -45,6 +47,19 @@ public class MainActivity extends AppCompatActivity {
 depositvertical=findViewById(R.id.depositvertical);
 BalanceVErtical=findViewById(R.id.BalanceVErtical);
 Transfervertical=findViewById(R.id.Transfervertical);
+
+userIcon=findViewById(R.id.userIcon);
+        userIcon.setOnClickListener(new View.OnClickListener() {
+            Boolean Profile=true;
+            @Override
+            public void onClick(View v) {
+                if(Profile)
+                userIcon.setImageResource(R.drawable.profile);
+                else
+                    userIcon.setImageResource(R.drawable.profile2);
+                Profile=!Profile;
+            }
+        });
         a=findViewById(R.id.a);
         b=findViewById(R.id.b);
         c=findViewById(R.id.c);

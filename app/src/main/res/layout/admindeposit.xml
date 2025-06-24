@@ -14,6 +14,17 @@
         android:orientation="vertical"
         android:padding="24dp">
 
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/adlam_display"
+            android:text="Add Money"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
         <EditText
             android:id="@+id/edit_deposit"
             android:layout_width="match_parent"

@@ -21,11 +21,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="8dp"
-            android:fontFamily="@font/gasoek_one"
+            android:fontFamily="@font/syncopate"
             android:text="Welcome Admin"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/devpassword"
