@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -13,10 +14,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class DetailsActivity extends AppCompatActivity {
+    ImageView userProfile;
     TextView accountnumber1, password1, favouritecolour1, balance3,usernametext;
     AppDatabase db;
     CustomerDao dao;
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,7 @@ public class DetailsActivity extends AppCompatActivity {
         favouritecolour1 = findViewById(R.id.favouritecolour1);
         balance3 = findViewById(R.id.balance10);
         usernametext = findViewById(R.id.usernametext);
+        userProfile=findViewById(R.id.userProfile);
         db = AppDatabase.getInstance(this);
         dao = db.customerDao();
         Intent intent = getIntent();
@@ -47,13 +49,17 @@ public class DetailsActivity extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         String source = intent.getStringExtra("source");
         if ("first".equals(source)) {
-            Intent intent1 = getIntent();
-            String number = intent1.getStringExtra(MainActivity.EXTRA_NUMBER);
+
+            String number = intent.getStringExtra(MainActivity.EXTRA_NUMBER);
 
             int accnumber = Integer.parseInt(number);
 
 
             Customer customer = dao.getCustomerByAccountNumber(accnumber);
+            userProfile.setImageResource(R.drawable.profile);
+            if(customer.getGender().equals("Female")){
+                userProfile.setImageResource(R.drawable.profile2);
+            }
             String userName = customer.getName();
             String displayName = userName.substring(0, 1).toUpperCase() + userName.substring(1).toLowerCase();
             usernametext.setText(displayName);
@@ -62,13 +68,17 @@ public class DetailsActivity extends AppCompatActivity {
             favouritecolour1.setText(customer.getFavouriteColour());
             balance3.setText(String.valueOf(customer.getBalance()));
         } else if ("second".equals(source)) {
-            Intent intent1 = getIntent();
-            String number = intent1.getStringExtra(CreateAccount.EXTRA_ACCOUNTNUMBER);
+
+            String number = intent.getStringExtra(CreateAccount.EXTRA_ACCOUNTNUMBER);
 
             int accnumber = Integer.parseInt(number);
 
 
             Customer customer = dao.getCustomerByAccountNumber(accnumber);
+            userProfile.setImageResource(R.drawable.profile);
+            if(customer.getGender().equals("Female")){
+                userProfile.setImageResource(R.drawable.profile2);
+            }
             String userName = customer.getName();
             String displayName = userName.substring(0, 1).toUpperCase() + userName.substring(1).toLowerCase();
             usernametext.setText(displayName);

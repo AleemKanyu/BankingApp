@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     BiometricPrompt.PromptInfo promptInfo;
 
     public static final String EXTRA_NUMBER = "accountnumberoftheaccount.com";
-    @SuppressLint({"ClickableViewAccessibility", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-//        startActivity(new Intent(this, QRScannerActivity.class));
 depositvertical=findViewById(R.id.depositvertical);
 BalanceVErtical=findViewById(R.id.BalanceVErtical);
 Transfervertical=findViewById(R.id.Transfervertical);

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView userProfile;
         TextView nameText, balanceText,edit_deposit;
         ImageButton deletebutton,addmoneybutton,update_balance,update_cancel,yes,no;
 
@@ -45,6 +47,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             edit_deposit=itemView.findViewById(R.id.edit_deposit);
             yes=itemView.findViewById(R.id.yes);
             no=itemView.findViewById(R.id.no);
+            userProfile=itemView.findViewById(R.id.userProfile);
         }
     }
 
@@ -58,6 +61,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Customer customer = customerList.get(position);
+        holder. userProfile.setImageResource(R.drawable.profile);
+        if(customer.getGender().equals("Female")){
+            holder. userProfile.setImageResource(R.drawable.profile2);
+        }
         holder.nameText.setText(customer.Name);
         holder.balanceText.setText("₹ " + customer.Balance);
         holder.deletebutton.setOnClickListener(v -> {
@@ -117,13 +124,28 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             Button update_cancel = view.findViewById(R.id.update_cancel);
 
             update_balance.setOnClickListener(v -> {
-                String newBalance= String.valueOf(edit_deposit.getText());
+                String newBalanceStr = edit_deposit.getText().toString().trim();
 
-                customer.Balance+=Integer.parseInt(newBalance);
-                dialog.dismiss();
+                if (!newBalanceStr.isEmpty()) {
+                    try {
+                        int depositAmount = Integer.parseInt(newBalanceStr);
+                        customer.Balance += depositAmount;
 
+                        // Update in DB
+                        dao.update(customer);
 
+                        // Refresh UI
+                        notifyItemChanged(holder.getAbsoluteAdapterPosition());
+
+                        dialog.dismiss();
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(v.getContext(), "Invalid amount", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(v.getContext(), "Please enter amount", Toast.LENGTH_SHORT).show();
+                }
             });
+
 
             update_cancel.setOnClickListener(v -> dialog.dismiss());
 

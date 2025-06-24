@@ -10,6 +10,7 @@ public class Customer {
     @PrimaryKey
     private int AccountNumber;
     String Name;
+    String Gender;
     int Age;
     int Balance;
      int Pin;
@@ -19,7 +20,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String Name, int AccountNumber, int Age, int random,String question, String Answer) {
+    public Customer(String Name, int AccountNumber, int Age, int random,String question, String Answer,String Gender) {
         int j = 8888;
         this.Name = Name;
         this.AccountNumber = AccountNumber;
@@ -28,12 +29,15 @@ public class Customer {
         this.Pin = (j - random + AccountNumber);
         this.question = question;
         this.answer = Answer;
+        this.Gender=Gender;
     }
 
     // Getters and Setters
     public String getQuestion() {
         return question;
     }
+    public String getGender(){return Gender;}
+    public void setGender(String Gender){this.Gender=Gender;}
 
     public void setQuestion(String question) {
         this.question = question;

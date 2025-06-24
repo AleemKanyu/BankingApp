@@ -8,92 +8,101 @@
     android:background="@drawable/gradientdarkblue"
     tools:context=".CreateAccount">
 
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="108dp"
-        android:background="@drawable/edittext_background"
-        android:ems="10"
-        android:hint="Enter Your name"
-        android:inputType="text"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:textColorLink="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextText2"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:background="@drawable/edittext_background"
-        android:ems="10"
-        android:hint="Enter your Age"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText"
-        app:layout_constraintVertical_bias="0.084" />
-
-    <Spinner
-        android:id="@+id/mySpinner"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:background="@drawable/edittext_background"
-        android:popupBackground="@color/your_custom_color"
-        android:textAlignment="center"
-
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton6"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2"
-        app:layout_constraintVertical_bias="0.126" />
-
-    <EditText
-        android:id="@+id/editTextText3"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:background="@drawable/edittext_background"
-        android:ems="10"
-        android:hint="Answer"
-        android:inputType="text"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mySpinner"
-        app:layout_constraintVertical_bias="0.124" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/new_button_background4"
-        android:onClick="homeActivity"
-        android:padding="10dp"
-
-
-        android:text="Submit"
-        android:textColor="#000000"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="393dp"
+        android:layout_height="643dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.69" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editTextText"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="108dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Enter Your name"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textColorLink="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/editTextText2"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Enter your Age"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorHint="#000000" />
+
+            <Spinner
+                android:id="@+id/GenderSpinner"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+
+                android:background="@drawable/edittext_background"
+                android:popupBackground="@color/your_custom_color"
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/mySpinner"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+
+                android:background="@drawable/edittext_background"
+                android:popupBackground="@color/your_custom_color"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editTextText3"
+
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:hint="Answer"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorHint="#000000" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/new_button_background4"
+                android:onClick="homeActivity"
+                android:padding="10dp"
+                android:text="Submit"
+                android:textColor="#000000" />
+        </LinearLayout>
+    </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton6"

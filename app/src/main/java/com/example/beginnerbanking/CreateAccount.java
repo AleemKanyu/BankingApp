@@ -25,7 +25,7 @@ public class CreateAccount extends AppCompatActivity {
     EditText editTextText, editTextText2, editTextText3;
     AppDatabase db;
     CustomerDao dao;
-    String question;
+    String question,GENDER;
 
     public static final String EXTRA_NAME = "name.com";
     public static final String EXTRA_COLOUR = "colour.com";
@@ -44,6 +44,7 @@ public class CreateAccount extends AppCompatActivity {
         editTextText3 = findViewById(R.id.editTextText3);
         button = findViewById(R.id.button);
         Spinner mySpinner = findViewById(R.id.mySpinner);
+        Spinner GenderSpinner=findViewById(R.id.GenderSpinner);
 
         // Spinner setup with security questions
         String[] secuirityQuestions = {
@@ -51,10 +52,16 @@ public class CreateAccount extends AppCompatActivity {
                 "What's your favourite Colour?",
                 "What's your favourite Sport?",
                 "What's your favourite Food?"};
-
+        String[] ChooseGender = {
+                "Choose Your Gender",
+                "Male",
+                "Female"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_layout, secuirityQuestions);
         adapter.setDropDownViewResource(R.layout.spinner_layout);
         mySpinner.setAdapter(adapter);
+        ArrayAdapter<String> gender = new ArrayAdapter<>(this, R.layout.spinner_layout, ChooseGender);
+        gender.setDropDownViewResource(R.layout.spinner_layout);
+        GenderSpinner.setAdapter(gender);
 
         // Initialize Room database instance
         db = AppDatabase.getInstance(this);
@@ -78,6 +85,16 @@ public class CreateAccount extends AppCompatActivity {
                 // no action needed
             }
         });
+        GenderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                GENDER = parent.getItemAtPosition(position).toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         // On clicking "Create Account" button
         button.setOnClickListener(v -> createAccount());
@@ -89,34 +106,35 @@ public class CreateAccount extends AppCompatActivity {
         String ageStr = editTextText2.getText().toString();
         String colour = editTextText3.getText().toString();
 
-        // Validate input fields
-        if (name.isEmpty() || ageStr.isEmpty() || colour.isEmpty()) {
+        if (name.isEmpty() || ageStr.isEmpty() || colour.isEmpty()
+                || GENDER.equals("Choose Your Gender")
+                || question.equals("Select Secuirity Question")) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
         int age = Integer.parseInt(ageStr);
-
-        // Set default PIN based on age group
         int random = (age <= 18) ? 4321 : 1234;
 
-        // Generate account number (based on number of customers already in DB)
-        List<Customer> allCustomers = dao.getAllCustomers();
-        int nextAccountNumber = allCustomers.size();
+        new Thread(() -> {
+            List<Customer> allCustomers = dao.getAllCustomers();
+            int nextAccountNumber = allCustomers.size();
 
-        // Create and insert new customer into DB
-        Customer newCustomer = new Customer(name, nextAccountNumber, age, random, question, colour);
-        dao.insert(newCustomer);
+            Customer newCustomer = new Customer(name, nextAccountNumber, age, random, question, colour, GENDER);
+            dao.insert(newCustomer);
 
-        Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show();
+            Customer saved = dao.getCustomerByAccountNumber(nextAccountNumber);
 
-        // Fetch saved customer and open details screen
-        Customer saved = dao.getCustomerByAccountNumber(nextAccountNumber);
-        Intent intent = new Intent(this, DetailsActivity.class);
-        intent.putExtra(EXTRA_ACCOUNTNUMBER, String.format(Locale.US, "%04d", saved.getAccountNumber())); // pad with 0s
-        intent.putExtra("source", "second");
-        startActivity(intent);
+            runOnUiThread(() -> {
+                Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, DetailsActivity.class);
+                intent.putExtra(EXTRA_ACCOUNTNUMBER, String.format(Locale.US, "%04d", saved.getAccountNumber()));
+                intent.putExtra("source", "second");
+                startActivity(intent);
+            });
+        }).start();
     }
+
 
     // Navigates back to home screen and clears activity stack
     public void homeActivity(View v) {
