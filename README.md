@@ -64,6 +64,8 @@ The main goal of this project was to move beyond simple console programs and bui
 
 ->Run the app on an emulator or physical Android device
 
+->There's an option for admin panel ,it will ask for a password ,its "962272"
+
 🧠 What I Learned
 
 ->Building multi-screen Android apps using Activities
