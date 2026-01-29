@@ -5,7 +5,7 @@ This project simulates basic banking operations and was developed to understand 
 As part of a coursework requirement, we were asked to build a terminal-based Java project. I decided to take this a step further by developing it as an Android application, using Java and Android Studio.
 This approach helped me bridge the gap between core Java programming and real-world application development, while gaining hands-on experience with Android components and databases.
 
-**📌 About the Project**
+**About the Project**
 
 This application is a beginner-friendly banking app that allows users to create accounts, manage balances, and perform transactions within the app.
 
@@ -27,7 +27,7 @@ The main goal of this project was to move beyond simple console programs and bui
 
 ->Local data persistence using Room Database
 
-⚠️ This is a learning project and does not implement real banking security or online transactions.
+This is a learning project and does not implement real banking security or online transactions.
 
 **🛠 Technologies Used**
 
@@ -50,7 +50,7 @@ The main goal of this project was to move beyond simple console programs and bui
 ->Entity classes for data models
 
 
-**🚀 How to Run the Project**
+**How to Run the Project**
 
 ->Clone the repository
 
@@ -66,7 +66,7 @@ The main goal of this project was to move beyond simple console programs and bui
 
 ->There's an option for admin panel ,it will ask for a password ,its "962272"
 
-🧠 What I Learned
+What I Learned
 
 ->Building multi-screen Android apps using Activities
 
@@ -80,7 +80,7 @@ The main goal of this project was to move beyond simple console programs and bui
 
 ->Understanding how real apps manage state and data
 
-**🔮 Future Improvements**
+**Future Improvements**
 
 ->Improve UI/UX and layout consistency
 
@@ -92,7 +92,7 @@ The main goal of this project was to move beyond simple console programs and bui
 
 ->Cloud or backend integration
 
-<h2>📸 App Screenshots</h2>
+<h2>App Screenshots</h2>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/e6526c77-cd56-4686-9b77-f2b89fd5ea8e" width="220" />
